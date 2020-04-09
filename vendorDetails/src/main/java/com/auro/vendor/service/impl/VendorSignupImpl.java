@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.auro.vendor.Utils.AmazonClient;
 import com.auro.vendor.custom.exception.BusinessException;
 import com.auro.vendor.custom.exception.DuplicateUserException;
 import com.auro.vendor.dao.AurozenWalletDao;
@@ -39,7 +40,8 @@ public class VendorSignupImpl implements VendorSignupService {
 	private INRWalletDao inrWalletDao;
 	@Autowired
 	private PasswordEncoder bCryptPasswordEncoder;
-
+	@Autowired
+	private AmazonClient amazonClient;
 	// @Autowired
 	// public VendorSignupImpl(BCryptPasswordEncoder bCryptPasswordEncoder) {
 	// this.bCryptPasswordEncoder = bCryptPasswordEncoder;
