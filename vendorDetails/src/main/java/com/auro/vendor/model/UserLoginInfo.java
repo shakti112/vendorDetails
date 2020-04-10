@@ -30,15 +30,6 @@ public class UserLoginInfo implements Serializable {
 	private String phone;
 	private String password;
 	private String category;
-	private String email;
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
 
 	public int getLoginId() {
 		return loginId;

@@ -10,6 +10,6 @@ public interface UserLoginService extends UserDetailsService {
 
 	public UserLoginInfo loadUserByEmailId(String username);
 
-	public UserLoginInfoDto getUserByEmail(String email);
+	public UserLoginInfoDto getUserByPhone(String phone);
 
 }

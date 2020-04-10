@@ -8,10 +8,10 @@ import com.auro.vendor.model.UserLoginInfo;
 @Repository
 public interface UserLoginInfoDao extends JpaRepository<UserLoginInfo, Integer> {
 
-	UserLoginInfo findByEmail(String email);
-
-	UserLoginInfo findByEmailAndPassword(String email, String encrypt);
+	public UserLoginInfo findByPhoneAndPassword(String email, String encrypt);
 
 	public UserLoginInfo findByLoginId(int vendorId);
+
+	public UserLoginInfo findByPhone(String phone);
 
 }

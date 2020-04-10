@@ -12,7 +12,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.auro.vendor.Utils.PasswordUtils;
 import com.auro.vendor.custom.exception.UnAuthorizedUserException;
 import com.auro.vendor.dao.UserLoginInfoDao;
 import com.auro.vendor.dto.UserLoginInfoDto;
@@ -33,8 +32,8 @@ public class UserLoginImpl implements UserLoginService {
 	// }
 
 	public UserLoginInfoDto userLogin(UserLoginInfoDto logininfo) {
-		UserLoginInfo userinfo = userLoginInfoDao.findByEmailAndPassword(logininfo.getEmail(),
-				PasswordUtils.encrypt(logininfo.getPassword(), PasswordUtils.secretKey));
+		UserLoginInfo userinfo = userLoginInfoDao.findByPhoneAndPassword(logininfo.getPhone(),
+				bCryptPasswordEncoder.encode(logininfo.getPassword()));
 		logininfo.setCategory(userinfo.getCategory());
 		if (userinfo == null) {
 			throw new UnAuthorizedUserException("Invalid user or password");
@@ -50,12 +49,11 @@ public class UserLoginImpl implements UserLoginService {
 		return logininfo;
 	}
 
-	@Override
-	public UserLoginInfoDto getUserByEmail(String email) {
+	public UserLoginInfoDto getUserByPhone(String Phone) {
 		ModelMapper mapper = new ModelMapper();
-		UserLoginInfo userinfo = userLoginInfoDao.findByEmail(email);
+		UserLoginInfo userinfo = userLoginInfoDao.findByPhone(Phone);
 		if (userinfo == null) {
-			throw new UsernameNotFoundException(email);
+			throw new UsernameNotFoundException(Phone);
 		}
 		return mapper.map(userinfo, UserLoginInfoDto.class);
 	}
@@ -69,7 +67,7 @@ public class UserLoginImpl implements UserLoginService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		// ModelMapper mapper = new ModelMapper();
-		UserLoginInfo userinfo = userLoginInfoDao.findByEmail(username);
+		UserLoginInfo userinfo = userLoginInfoDao.findByPhone(username);
 		if (userinfo == null) {
 			throw new UsernameNotFoundException(username);
 		}

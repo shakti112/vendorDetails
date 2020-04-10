@@ -8,6 +8,6 @@ import com.auro.vendor.model.VendorInfo;
 @Repository
 public interface VendorInfoDao extends JpaRepository<VendorInfo, Integer> {
 
-	VendorInfo findByVendorId(int vendorId);
+	public VendorInfo findByVendorId(int vendorId);
 
 }

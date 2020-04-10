@@ -52,18 +52,16 @@ public class VendorSignupImpl implements VendorSignupService {
 	public VendorInfoDto saveVendorDetails(VendorInfoDto vendorinfo) {
 		ModelMapper mapper = new ModelMapper();
 		mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-		UserLoginInfo userinfo = userLoginInfoDao.findByEmail(vendorinfo.getEmail());
+		UserLoginInfo userinfo = userLoginInfoDao.findByPhone(vendorinfo.getPhone());
 		if (userinfo != null) {
 			throw new DuplicateUserException("user already exists");
 		}
 		VendorInfo info = mapper.map(vendorinfo, VendorInfo.class);
 		UserLoginInfo userLoginInfo = new UserLoginInfo();
-		userLoginInfo.setPassword(bCryptPasswordEncoder.encode(vendorinfo.getPassword()));
+		userLoginInfo.setPassword(bCryptPasswordEncoder.encode(vendorinfo.getPhone()));
 		userLoginInfo.setCategory(vendorinfo.getCategory());
 		userLoginInfo.setPhone(vendorinfo.getPhone());
-		userLoginInfo.setEmail(vendorinfo.getEmail());
 		userLoginInfo = userLoginInfoDao.save(userLoginInfo);
-		info.setVendorId(userLoginInfo.getLoginId());
 		info.setVendorId(userLoginInfo.getLoginId());
 		// info.setUserLoginInfo(userLoginInfo);
 		if (Objects.nonNull(vendorinfo.getAurozenWalletId()) && vendorinfo.getAurozenWalletId() > 0) {
@@ -101,7 +99,6 @@ public class VendorSignupImpl implements VendorSignupService {
 		mapper.map(vendorinfo, vendorInfoToUpdate);
 		UserLoginInfo userLoginInfo = userLoginInfoDao.findByLoginId(vendorId);
 		userLoginInfo.setPhone(vendorinfo.getPhone());
-		userLoginInfo.setEmail(vendorinfo.getEmail());
 		userLoginInfoDao.save(userLoginInfo);
 		vendorInfoDao.save(vendorInfoToUpdate);
 		logger.debug("successfully signup");

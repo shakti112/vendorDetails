@@ -41,7 +41,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 			UserLoginInfo userLoginInfo = new ObjectMapper().readValue(req.getInputStream(), UserLoginInfo.class);
 
 			return getAuthenticationManager().authenticate(new UsernamePasswordAuthenticationToken(
-					userLoginInfo.getEmail(), userLoginInfo.getPassword(), new ArrayList<>()));
+					userLoginInfo.getPhone(), userLoginInfo.getPassword(), new ArrayList<>()));
 
 		} catch (IOException e) {
 			throw new RuntimeException(e);
@@ -54,7 +54,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
 		// Get User Details from Database
 		String userName = ((User) auth.getPrincipal()).getUsername();
-		UserLoginInfoDto userLoginInfoDto = userLoginService.getUserByEmail(userName);
+		UserLoginInfoDto userLoginInfoDto = userLoginService.getUserByPhone(userName);
 
 		// Generate GWT
 		String token = Jwts.builder().setSubject(userLoginInfoDto.getLoginId())

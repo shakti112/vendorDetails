@@ -9,7 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@SpringBootApplication(scanBasePackages = "com.auro.vendor")
+@SpringBootApplication(scanBasePackages = "com.auro")
 @EntityScan("com.auro.vendor.model")
 @EnableJpaRepositories("com.auro.vendor.dao")
 @EnableTransactionManagement
