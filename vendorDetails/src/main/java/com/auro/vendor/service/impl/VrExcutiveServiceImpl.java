@@ -1,4 +1,4 @@
-package com.auro.vre.service.impl;
+package com.auro.vendor.service.impl;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -18,11 +18,11 @@ import com.auro.vendor.custom.exception.DuplicateUserException;
 import com.auro.vendor.dao.AurozenWalletDao;
 import com.auro.vendor.dao.UserLoginInfoDao;
 import com.auro.vendor.dao.VrExcutiveInfoDao;
+import com.auro.vendor.dto.VrExcutiveDto;
 import com.auro.vendor.model.AurozenWallet;
 import com.auro.vendor.model.UserLoginInfo;
 import com.auro.vendor.model.VrExcutiveDetails;
-import com.auro.vre.dto.VrExcutiveDto;
-import com.auro.vre.vreService.VrExcutiveService;
+import com.auro.vendor.vendorService.VrExcutiveService;
 
 @Service
 public class VrExcutiveServiceImpl implements VrExcutiveService {

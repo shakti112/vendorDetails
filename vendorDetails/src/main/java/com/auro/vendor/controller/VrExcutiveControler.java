@@ -1,4 +1,4 @@
-package com.auro.vre.controller;
+package com.auro.vendor.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,13 +11,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.auro.vendor.controller.VendorRegistrationController;
-import com.auro.vre.dto.VrExcutiveDto;
-import com.auro.vre.vreService.VrExcutiveService;
+import com.auro.vendor.dto.VrExcutiveDto;
+import com.auro.vendor.vendorService.VrExcutiveService;
 
 @RestController
-public class VeExcutiveControler {
-	private static final Logger logger = LoggerFactory.getLogger(VendorRegistrationController.class);
+public class VrExcutiveControler {
+	private static final Logger logger = LoggerFactory.getLogger(VrExcutiveControler.class);
 	@Autowired
 	private VrExcutiveService vrExcutiveService;
 

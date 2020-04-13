@@ -1,4 +1,4 @@
-package com.auro.vre.dto;
+package com.auro.vendor.dto;
 
 public class VrExcutiveDto {
 	private int vreId;

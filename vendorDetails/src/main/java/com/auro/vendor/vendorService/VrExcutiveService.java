@@ -1,6 +1,6 @@
-package com.auro.vre.vreService;
+package com.auro.vendor.vendorService;
 
-import com.auro.vre.dto.VrExcutiveDto;
+import com.auro.vendor.dto.VrExcutiveDto;
 
 public interface VrExcutiveService {
 
