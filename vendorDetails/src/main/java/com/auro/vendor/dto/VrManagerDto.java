@@ -6,6 +6,15 @@ public class VrManagerDto {
 	private String phone;
 	private String password;
 	private String category;
+	private String vrManagerAddress;
+	private String vrManagerCity;
+	private String vrManagerState;
+	private String vrManagerCountry;
+	private String vrManagerAadhar;
+	private String vrManagerPAN;
+	private String Photo;
+	private String Gender;
+	private int aurozenWalletId;
 
 	public String getPassword() {
 		return password;
@@ -24,15 +33,6 @@ public class VrManagerDto {
 	}
 
 	private String vrManagerEmail;
-	private String vrManagerAddress;
-	private String vrManagerCity;
-	private String vrManagerState;
-	private String vrManagerCountry;
-	private String vrManagerAadhar;
-	private String vrManagerPAN;
-	private String Photo;
-	private String Gender;
-	private int aurozenWalletId;
 
 	public int getVrManagerId() {
 		return vrManagerId;

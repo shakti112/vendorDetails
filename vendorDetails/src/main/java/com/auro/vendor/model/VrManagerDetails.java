@@ -2,6 +2,7 @@ package com.auro.vendor.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -14,21 +15,30 @@ import javax.persistence.Table;
 public class VrManagerDetails implements Serializable {
 	@Id
 	private int vrManagerId;
-	/*
-	 * @JoinColumn(name = "vr_Manager_Id")
-	 * 
-	 * @OneToOne(fetch = FetchType.LAZY)
-	 */
+	@JoinColumn(name = "vrm_Id")
+	@OneToOne(fetch = FetchType.LAZY)
+	private UserLoginInfo userLoginInfo;
+	@Column(name = "vrm_name")
 	private String vrManagerName;
+	@Column(name = "phone")
 	private String phone;
+	@Column(name = "vrm_email")
 	private String vrManagerEmail;
+	@Column(name = "vrm_address")
 	private String vrManagerAddress;
+	@Column(name = "vrm_city")
 	private String vrManagerCity;
+	@Column(name = "vrm_state")
 	private String vrManagerState;
+	@Column(name = "vrm_country")
 	private String vrManagerCountry;
+	@Column(name = "vrm_aadhar")
 	private String vrManagerAadhar;
+	@Column(name = "vrm_pan")
 	private String vrManagerPAN;
+	@Column(name = "photo")
 	private String Photo;
+	@Column(name = "vrm_gender")
 	private String Gender;
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "aurozen_wallet_id")
